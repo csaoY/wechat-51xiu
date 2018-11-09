@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://github.com/RebeccaHanjw/weapp-wechat-zhihu
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	sslVerify = true
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master

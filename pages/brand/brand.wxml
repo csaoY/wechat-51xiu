@@ -1,0 +1,32 @@
+<import src="../templates/netError.wxml"/>
+<scroll-view scroll-y="true" class="container discovery" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
+    <swiper class="activity" indicator-dots="{{indicatorDots}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#F39700"
+    indicator-active-color="#8897A6">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item bindtap="bannerTap" data-src="{{item}}">
+          <image src="{{item}}" class="slide-image" width="100%" height="100%" mode="aspectFill"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <template wx:if="{{hasNetError===true}}" is="netError" data="{{...item}}"/>
+
+
+    <block wx:for="{{brandInfo}}" wx:for-index="idx" wx:key="brandId" wx:for-item="item" data-idx="{{idx}}">
+      <view class="feed-item" bindtap="bindQueTap" data-typeId="{{item.typeId}}" data-brandId="{{item.brandId}}">
+        <view class="feed-source">
+            <view class="avatar">
+              <image src="{{item.imgUrl}}"></image>
+            </view>
+            <text>{{item.brandName}}</text>
+           <image src="../../images/ico_app_arr_r.png" class="arrow"></image>
+        </view>
+      </view>
+    </block>
+    
+
+
+    
+  </view>
+</scroll-view>

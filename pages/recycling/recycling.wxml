@@ -1,0 +1,38 @@
+<import src="../templates/netError.wxml" />
+<view class="container">
+  <view class="tab-flex">
+    <scroll-view scroll-y="true" style="height: {{scrollViewHeight}}px;" class="left-tab">
+      <view class="brand-title">
+        <text class="cla">品牌</text>
+      </view>
+      <block wx:for="{{mobiles}}" wx:key="mobile_id" wx:for-index="idx" wx:for-item="mobile">
+        <view class=" {{currentSelectedMobile==idx ? 'brand-active' : 'brand'}}" catchtap="mobileTypeTap" data-idx="{{idx}}" data-brandId="{{mobile.id}}">
+          <text class="cla">{{mobile.brandName}}</text>
+        </view>
+      </block>
+    </scroll-view>
+    <scroll-view scroll-y="true" style="height: {{scrollViewHeight}}px;" class="right-tab">
+      <view class="kind-title">
+        <view class="{{type=='phone' ? 'phone-active' : 'pad'}}" data-type="phone" catchtap="switchTab">手机</view>
+        <view class="{{type=='pad' ? 'phone-active' : 'pad'}}" data-type="pad" catchtap="switchTab">平板</view>
+      </view>
+      <template wx:if="{{hasNetError===true}}" is="netError" data="{{...item}}" />
+      <view class="box" hidden="{{type=='phone' ? '' : true}}" wx:if="{{hasNetError===false}}">
+        <block wx:for="{{versionList}}" wx:key="id" wx:for-index="idx" wx:for-item="version">
+          <view class="phone-bar" catchtap="ontapTobuy" data-phone="{{version.versionName}}" data-versionId="{{version.id}}">
+            <view class="type">{{version.versionName}}</view>
+            <!--<text class="price">￥{{version.hprice}}</text>-->
+          </view>
+        </block>
+      </view>
+      <view class="box" hidden="{{type=='pad' ? '' : true}}" wx:if="{{hasNetError===false}}">
+        <block wx:for="{{versionList}}" wx:key="id" wx:for-index="idx" wx:for-item="version">
+          <view class="phone-bar" catchtap="ontapTobuy" data-phone="{{version.versionName}}" data-versionId="{{version.id}}">
+            <text class="type">{{version.versionName}}</text>
+            <!--<text class="price">￥{{version.hprice}}</text>-->
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/brand/brand",
+    "pages/brand/placeorder/placeorder",
+    "pages/more/more",
+    "pages/recycling/recycling_shanhs/recycling_shanhs",
+    "pages/assessment/assessment",
+    "pages/memoryUpgrade/memoryUpgrade",
+    "pages/assessment/assessment_list/assessment_list",
+    "pages/assessment/recyclingcar/recyclingcar",
+    "pages/assessment/mobileValidate/mobileValidate",
+    "pages/assessment/placeorder/placeorder",
+    "pages/clause/maintenanceclause/maintenanceclause",
+    "pages/clause/recoveryclause/recoveryclause",
+    "pages/brand/selectmodel/selectmodel",
+    "pages/brand/detailed/detailed",
+    "pages/more/myorder/myorder",
+    "pages/more/orderitem/orderitem",
+    "pages/more/orderitemre/orderitemre",
+    "pages/more/phonebinding/phonebinding",
+    "pages/login/login",
+    "pages/last/fixlast/last",
+    "pages/last/rebuylast/last",
+    "pages/more/send/send"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ee781e",
+    "navigationBarTitleText": "51修",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#626567",
+    "selectedColor": "#f57129",
+    "backgroundColor": "#FBFBFB",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "51修",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_focus.png"
+      },
+      {
+        "pagePath": "pages/brand/brand",
+        "text": "维修",
+        "iconPath": "images/repair.png",
+        "selectedIconPath": "images/repair_focus.png"
+      },
+      {
+        "pagePath": "pages/recycling/recycling_shanhs/recycling_shanhs",
+        "text": "回收",
+        "iconPath": "images/recycle.png",
+        "selectedIconPath": "images/recycle_focus.png"
+      },
+      {
+        "pagePath": "pages/memoryUpgrade/memoryUpgrade",
+        "text": "升级",
+        "iconPath": "images/memory.png",
+        "selectedIconPath": "images/memory_focus.png"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "text": "个人中心",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_focus.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

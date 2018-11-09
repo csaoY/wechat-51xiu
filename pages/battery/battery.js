@@ -1,0 +1,124 @@
+const urls = require('../../utils/urls');
+import post from '../../utils/requestNew'
+var app = getApp();
+Page({
+  data: {
+  },
+  onLoad: function (options) {
+    console.log(options)
+    const type=options.type||'';
+    const brandNo = options.brandno||'';
+    const repairPlanId = options.repairplanid||'';
+    const colorId = options.colorid||'';
+    const versionId = options.versionid||'';
+    this.newFix(type, brandNo, repairPlanId, colorId, versionId)
+    if(!type){
+      console.log('点的单个商品')
+      this.setData({
+        step:4
+      })
+    }else{
+      this.setData({
+        step: 1
+      })
+    }
+  
+  },
+  newFix(type, brandNo, repairPlanId, colorId, versionId){
+    var that = this;
+    var obj = new Object;
+    obj.type=type
+    obj.brandNo = brandNo;
+    obj.repairPlanId = repairPlanId
+    obj.colorId = colorId
+    obj.versionId = versionId
+    post(urls.newFix, obj).then((res) => {
+     console.log(res)
+     that.setData({
+       mapList: res.mapList,
+       colorMapList: res.colorMapList||[],
+       list: res.list||[],
+       colorId: res.colorId||'',
+       versionId: res.versionId||'',
+       repairPlanId: res.repairPlanId||'',
+       singleName: res.singleName
+     })   
+    }).catch((e) => {
+      console.log(e)
+    })
+  },
+  changeVersion(e){
+    const that=this;
+    var obj = new Object;
+    obj.versionId = e.currentTarget.dataset.id
+    post(urls.queryColor, obj).then((res) => {
+      console.log(res)
+      that.setData({
+        versionId: e.currentTarget.dataset.id,
+        colorMapList: res || [],
+        step:2,
+        colorId:"",
+        repairPlanId:""
+      })
+
+    }).catch((e) => {
+      console.log(e)
+    })
+  },
+  changeColor(e){
+    const that = this;
+    var obj = new Object;
+    obj.colorId = e.currentTarget.dataset.id;
+    obj.singleName = that.data.singleName;
+    post(urls.queryProgramme, obj).then((res) => {
+      console.log(res)
+      that.setData({
+        colorId: e.currentTarget.dataset.id,
+        list: res || [],
+        step:3,
+        repairPlanId: ""
+      })
+    }).catch((e) => {
+      console.log(e)
+    })
+  },
+  changeDetail(e){
+    this.setData({
+      repairPlanId: e.currentTarget.dataset.id,
+      price: e.currentTarget.dataset.price,
+      step:4
+    })
+  },
+  showList(e){
+    this.setData({
+      step: e.currentTarget.dataset.step
+    })
+  },
+  getplan(){
+    const that = this;
+    var obj = new Object;
+    if (!that.data.repairPlanId){
+      wx.showToast({
+        title: '还没有选择维修方案',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    obj.id = that.data.repairPlanId;
+      post(urls.getrepairPlan, obj).then((res) => {
+      console.log(res)
+        const a = res.selectedPlanList;
+        const b = res.totalPrice;
+        console.log(a)
+        //console.log(c)
+      wx.navigateTo({
+        url: '/pages/brand/placeorder/placeorder?selectedPlanList=' + JSON.stringify(a)+'&totalPrice='+ b
+      })
+     
+    }).catch((e) => {
+      console.log(e)
+    })
+
+  }
+})

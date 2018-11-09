@@ -1,0 +1,377 @@
+<import src="../templates/netError.wxml" />
+<view class="con">
+<swiper autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}" >
+  <block wx:for="{{banner}}" wx:key="{{banner}}">
+    <swiper-item>
+      <image src="{{imgHost+item.imgUrl}}" class="slide-image" style="width:750rpx;" mode="widthFix"/>
+    </swiper-item>
+  </block>
+</swiper>
+  <!--<view class="box">
+    <view class="classname"></view>
+    <image src="/images/b1.png" bindtap="tab" data-pid="1" hidden="{{eventid==2}}"></image>
+    <image src="/images/b2.png" bindtap="tab" data-pid="1" hidden="{{eventid==1}}"></image>
+    <image src="/images/b3.png" class="fr" bindtap="tab" data-pid="2" hidden="{{eventid==1}}"></image>
+    <image src="/images/b4.png" class="fr" bindtap="tab" data-pid="2" hidden="{{eventid==2}}"></image>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:495rpx;" hidden="{{eventid==2}}" class="swi">
+      <image src="/images/arrow-o.png" class="arrow"></image>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/yewu1.jpg" class="show"></image>
+          <image src="/images/yewu2.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/yewu3.jpg" class="show"></image>
+          <image src="/images/yewu4.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:495rpx;" hidden="{{eventid==1}}" class="swi">
+      <image src="/images/arrow-o.png" class="arrow"></image>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/huishou1.jpg" class="show"></image>
+          <image src="/images/huishou2.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/huishou3.jpg" class="show"></image>
+          <image src="/images/huishou4.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+
+
+  </view>-->
+
+  <view style="background:#fff">
+    <view class="brand" style="height:{{showAllBrand?'510rpx':340+'rpx'}};transition:height .3s;">
+      <!--<view class="brand-title">维修品牌列表</view>-->
+      <template wx:if="{{hasNetError===true}}" is="netError" data="{{...item}}" />
+      <block wx:for="{{brandInfo}}" wx:for-index="idx" wx:key="brandId" wx:for-item="item" data-idx="{{idx}}">
+        <view class="brand-list" bindtap="bindQueTap" data-typeId="{{item.typeId}}" data-brandId="{{item.brandId}}">
+          <image src="{{item.imgUrl}}"></image>
+          <view class="listtext">{{item.brandName}}</view>
+        </view>
+      </block>
+    </view>
+    <view class="lookmore" bindtap='showBrand'>
+      <text>{{showAllBrand?'点击收起':'点击查看更多机型'}}</text>
+    </view>
+  </view>
+
+  <!--
+ <view class="swiper-wrapper">
+        <view class="swiper-slide">
+            <view class="text">
+                <view class="head-wrapper">
+                    <image src="${contextPath }/images/new_home/tx2.png"></image>
+                </view>
+                <view class="line"></view>
+                <view class="content" style="background:#fff;">
+                    <view style="height:40px;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">维修要选最快的，配件我们要选最好的</view>
+                    <view  style="height:20px;">— 51修承诺</view>
+                </view>
+            </view>
+        </view>
+        <view class="swiper-slide">
+            <view class="text">
+                <view class="head-wrapper">
+                    <image src="${contextPath }/images/new_home/head.png"></image>
+                </view>
+                <view class="line"></view>
+                <view class="content">
+                    <view>维修价格、维修过程都很透明，体验一次贴心的服务 </view>
+                    <view> — 白领精英 Kylie</view>
+                </view>
+            </view>
+        </view>
+        <view class="swiper-slide">
+            <view class="text">
+                <view class="head-wrapper">
+                    <image src="${contextPath }/images/new_home/tx1.png" ></image>
+                </view>
+                <view class="line"></view>
+                <view class="content">
+                    <view>上门维修，感觉更加方便，一边修手机，一边上班</view>
+                    <view> — 工程师张韦</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="swiper-slide">
+            <view class="text">
+                <view class="head-wrapper">
+                    <image src="${contextPath }/images/new_home/tx3.png" alt="">
+                </view>
+                <view class="line"></view>
+                <view class="content">
+                    <view>我把51修推荐给了闺蜜，朋友说：够专业，高颜值</view>
+                    <view>— 星巴克抹茶</view>
+                </view>
+            </view>
+        </view>
+        <view class="swiper-slide">
+            <view class="text">
+                <view class="head-wrapper">
+                    <image src="${contextPath }/images/new_home/tx4.png" ></image>
+                </view>
+                <view class="line"></view>
+                <view class="content">
+                    <view>维修小哥挺帅的，务实利落，认真话少，嘿~~</view>
+                    <view>  — 喵女王甜甜</view>
+                </view>
+            </view>
+        </view>
+
+    </view>-->
+
+
+
+
+
+  <view >
+    <swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" class="text-wrapper" style="height:105px;margin:10px 0;">
+    <swiper-item>
+      <view class="text">
+        <view class="head-wrapper">
+          <image mode="widthFix" src="/images/newImg/tx2.png"></image>
+        </view>
+        <view class="line"></view>
+        <view class="content" style="background:#fff;">
+          <view style="height:40px;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">
+            维修要选最快的，配件我们要选最好的
+          </view>
+          <view style="height:20px;">— 51修承诺</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="text">
+        <view class="head-wrapper">
+          <image mode="widthFix" src="/images/newImg/head.png"></image>
+        </view>
+        <view class="line"></view>
+        <view class="content">
+          <view>维修价格、维修过程都很透明，体验一次贴心的服务</view>
+          <view> — 白领精英 Kylie</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="text">
+        <view class="head-wrapper">
+          <image mode="widthFix" src="/images/newImg/tx1.png"></image>
+        </view>
+        <view class="line"></view>
+        <view class="content">
+          <view>上门维修，感觉更加方便，一边修手机，一边上班</view>
+          <view> — 工程师张韦</view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class="text">
+        <view class="head-wrapper">
+          <image mode="widthFix" src="/images/newImg/tx3.png"></image>
+        </view>
+        <view class="line"></view>
+        <view class="content">
+          <view>我把51修推荐给了闺蜜，朋友说：够专业，高颜值</view>
+          <view>— 星巴克抹茶</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="text">
+        <view class="head-wrapper">
+          <image mode="widthFix" src="/images/newImg/tx4.png"></image>
+        </view>
+        <view class="line"></view>
+        <view class="content">
+          <view>维修小哥挺帅的，务实利落，认真话少，嘿~~</view>
+          <view> — 喵女王甜甜</view>
+        </view>
+      </view>
+    </swiper-item>
+
+  </swiper>
+  </view>
+
+
+
+
+  <!--
+  三个板块
+  -->
+  <view class="three">
+    <view>
+      <image src="/images/newImg/b1.png" mode="widthFix" bindtap='toNewFix' data-type="1"></image>
+    </view>
+    <view>
+      <image src="/images/newImg/b2.png" mode="widthFix" bindtap='toNewFix' data-type="2"></image>
+      <image src="/images/newImg/b3.png" mode="widthFix" bindtap='toNewFix' data-type="3"></image>
+
+    </view>
+  </view>
+
+  <view class="form">
+    <form bindsubmit="submitOrder">
+
+      <view class="fast  btn-slide down" bindtap='showFast'>
+        <view class="fast-icon">
+          <image src="/images/newImg/fast.png" mode="widthFix"></image>
+        </view>
+        <view class="content">
+          <view class="fast-txt">快速下单</view>
+          <view>30秒轻松搞定手机问题</view>
+        </view>
+        <view class="arrow">
+          <images src="/images/new_home/arrow.png" alt=""></images>
+        </view>
+      </view>
+      <view style="height:{{showFast?'100%':'0'}};transition:height 0.3s;overflow:hidden;">
+        <view class="input">
+
+        <input name="name" placeholder="联系人" maxlength="20" value="{{name}}" />
+      </view>
+      <view class="input">
+
+        <input name="phoneNumber" placeholder="手机号" bindinput="bindChangePhoneNumber" maxlength="11" value="{{phoneNumber}}" />
+      </view>
+      <view class="input">
+        
+        <input placeholder="验证码" name="vercode" value="{{vercode}}" maxlength="4" bindinput="bindChangeVercode" />
+        <view class="yzm" bindtap="setVerify" data-statu="open" data-phoneNumber="{{phoneNumber}}">{{verifyCodeTip}}</view>
+      </view>
+      <button class="btn" formType="submit">立即下单</button>
+      </view>
+    
+    </form>
+  </view>
+
+  <!--<view class="brand">
+    <view class="brand-title">维修品牌列表</view>
+    <block wx:for="{{brandInfo}}" wx:for-index="idx" wx:key="brandId" wx:for-item="item" data-idx="{{idx}}">
+      <view class="brand-list" bindtap="bindQueTap" data-typeId="{{item.typeId}}" data-brandId="{{item.brandId}}">
+        <image src="{{item.imgUrl}}"></image>
+        <view class="listtext">{{item.brandName}}</view>
+      </view>
+    </block>
+  </view>-->
+
+  <view style="height:25rpx;"></view>
+
+</view>
+
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+  <form bindsubmit="verifyCode">
+    <view class="content">
+      <input placeholder="请输入右侧图片验证码" name="verifyCode" maxlength="4" />
+      <image src="{{verifyCodeURL}}" bindtap="loadGenerateVerifyCode"></image>
+    </view>
+    <button class="submit" formType="submit">提交</button>
+    <view class="no" bindtap="powerDrawer" data-statu="close">×</view>
+  </form>
+</view>
+
+
+<view class="images-wrapper">
+<view>
+  <image src="/images/newImg/b-l.png" mode="widthFix"></image>
+</view>
+<view>
+<image src="/images/newImg/six.png"  mode="widthFix"></image>
+</view>
+
+</view>
+
+
+
+<view class="wrapper" style="margin:10px 0;background:#fff;">
+    <view class="notice">
+        <view>
+            <image src="/images/newImg/icon1.png" mode="widthFix"></image>
+            <view>免费上门</view>
+        </view>
+        <view>
+            <image src="/images/newImg/icon2.png"  mode="widthFix" ></image>
+            <view>品质配件</view>
+        </view>
+        <view>
+            <image src="/images/newImg/icon3.png"  mode="widthFix"></image>
+            <view>半年质保</view>
+        </view>
+        <view>
+            <image src="/images/newImg/icon4.png"  mode="widthFix"></image>
+            <view>全程录像</view>
+        </view>
+
+    </view>
+</view>
+
+
+
+<view class="fault-list">
+
+
+ <block wx:for="{{hot}}" wx:for-index="idx" wx:key="hot" wx:for-item="item" data-idx="{{idx}}">
+<view bindtap='selectVer' data-brandNo="{{item.brandNo}}" data-repairPlanId="{{item.repairPlanId}}" data-colorId="{{item.colorId}}" data-versionId="{{item.versionId}}">
+   <view>{{item.versionName}}</view>
+    <view>{{item.faultPartDetail}}</view>
+   <view>{{item.price}}</view>
+</view>
+</block>
+
+<text style="background:#fff;display:block;text-align: center;line-height: 40px;color: #549cfe;text-decoration: none;font-size: 14px;">查看热修机型与故障</text>
+</view>
+
+
+<view class="news">
+    <view class="title">
+        热门新闻
+    </view>
+
+        <view class="box-new" bindtap='toNews' data-idx="1">
+            <view class="left-image">
+                <image src="/images/newImg/1.png" alt="" mode="widthFix"></image>
+            </view>
+            <view class="right-content">
+                <view class="new-title">【首发】“51修”获得三千万Pre-A轮融资，整合供应链及平台优势打造手机售后产业生态圈</view>
+            </view>
+        </view>
+
+
+        <view class="box-new" bindtap='toNews' data-idx="2">
+            <view class="left-image">
+                <image src="/images/newImg/2.png" alt="" mode="widthFix" ></image>
+            </view>
+            <view class="right-content">
+                <view class="new-title">51修获金立、康佳、小辣椒授权售后服务商，开启互联网服务新模式</view>
+            </view>
+        </view>
+
+
+        <view class="box-new" bindtap='toNews' data-idx="3">
+            <view class="left-image">
+                <image src="/images/newImg/3.png" alt="" mode="widthFix"></image>
+            </view>
+            <view class="right-content">
+                <view class="new-title">用工业标准化引领服务，“51 修”筑绩手机售后O2O</view>
+            </view>
+        </view>
+
+</view>
+
+
+
+
+
+
+

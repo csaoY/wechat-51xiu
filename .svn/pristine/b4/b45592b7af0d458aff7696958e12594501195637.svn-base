@@ -1,0 +1,403 @@
+var util = require('../../utils/util.js')
+const _ = require('../../utils/underscore');
+const request = require('../../utils/request');
+const urls = require('../../utils/urls');
+import post from '../../utils/requestNew'
+var app = getApp();
+
+Page({
+  data: {
+    indicatorDots: false,
+    autoplay: false,
+    interval: 5000,
+    duration: 1000,
+    eventid: 1,
+    brandInfo: [],//维修品牌信息列表
+    name: "",//联系人
+    phoneNumber: "",//联系方式
+    vercode: "",    //手机验证码
+    verifyCodeURL: "", //图形验证码地址
+    verifyCodeTip: "获取验证码",
+    hasNetError: false,
+    showModalStatus: false,
+    showAllBrand:false,
+    showFast: true,
+    imgHost:'',//新加图片的域名
+    banner:[],//首页轮播图
+    hot:[]//热门机型
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '51修丨手机维修与回收微信小程序',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+        wx.showToast({
+          title: '感谢分享',
+          icon: 'success',
+          duration: 2000
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
+  //事件处理函数
+  bindItemTap: function () {
+    if (util.isRepeatClick()) return//判断是否为重复点击
+    wx.navigateTo({
+      url: '../answer/answer'
+    })
+  },
+  onLoad: function () {
+    this.loadIndex();
+    this.loadBandQuery();
+    
+  },
+  showBrand(){
+    this.setData({
+      showAllBrand: !this.data.showAllBrand
+    })
+
+  },
+  showFast(){
+    this.setData({
+      showFast: !this.data.showFast
+    })
+  },
+  tab: function (event) {
+    console.log(1)
+    var eventid = event.currentTarget.dataset.pid;
+
+    console.log(eventid)
+    this.setData({
+      eventid: eventid
+    })
+
+  },
+  catchTouchMove: function (res) {
+    return false
+  },//禁止轮播图手动滑动
+  loadIndex(){
+    console.log('hhh1')
+    var that = this;
+    //if (request.isLoading(this.addRQId)) return;
+    var obj = new Object;
+    post(urls.index, obj).then((res) => {
+      console.log(res.bannerList)
+      console.log(res.list)
+      console.log(res.mapList)
+      console.log(res.imageHost)
+      that.setData({
+        imgHost: res.imageHost,
+        hot: res.mapList,
+        banner:res.bannerList
+      })
+    }).catch((e)=>{
+      console.log(e)
+    })
+  },
+  loadBandQuery: function () {
+    var that = this;
+    if (request.isLoading(this.addRQId)) return;
+    const values = _.extend({ id: "123" ,channel: 6, channel: 6}, "");
+    that.addRQId = request.get(urls.brand_query, values, function (data) {
+      that.setData({
+        brandInfo: data.brandInfo
+      });
+      console.log("装载维修列表成功");
+      console.log(that.data.brandInfo);
+    }, this, {
+        isShowLoading: false,
+        failAfter: function (res) {
+          that.setData({
+            hasNetError: true
+          });
+        }
+      }
+    );
+  },
+  toNewFix(e){
+    wx.navigateTo({
+      url: '../battery/battery?type=' + e.currentTarget.dataset.type,
+    })
+  },
+  selectVer(e){
+    console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '../battery/battery?brandno=' + e.currentTarget.dataset.brandno + '&repairplanid=' + e.currentTarget.dataset.repairplanid + '&colorid=' + e.currentTarget.dataset.colorid + '&versionid=' + e.currentTarget.dataset.versionid
+    })
+
+  },
+  toNews(e){
+    
+     wx.navigateTo({
+       url: '../news/news?idx=' + e.currentTarget.dataset.idx,
+     })
+  },
+  bindQueTap: function (e) {
+    console.log(1)
+    if (util.isRepeatClick()) return//判断是否为重复点击
+    var that = this;
+    var brandId = e.currentTarget.dataset.brandid
+    var typeId = e.currentTarget.dataset.typeid
+    wx.navigateTo({
+      url: '../brand/selectmodel/selectmodel?typeId=' + typeId + "&brandId=" + brandId
+    })
+  },
+  submitOrder: function (e) {
+    if (util.isRepeatClick()) return//判断是否为重复点击
+    var that = this;
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    var phoneNumber = e.detail.value.phoneNumber//客户手机号码【必填】
+    var name = e.detail.value.name //客户名字【必填】
+    var vercode = this.data.vercode    //手机验证码
+    if (name.replace(/\s/g, "") == "") {
+      wx.showToast({
+        title: '请填写联系人',
+        icon: 'success',
+        duration: 2000
+      })
+      return
+    }
+    if (!(/^[a-zA-Z ]{1,20}$/.test(name)) && !(/^[\u4e00-\u9fa5]{1,10}$/.test(name))) {
+      wx.showToast({
+        title: '请填写正确的联系人名',
+        icon: 'success',
+        duration: 2000
+      })
+      return
+    }
+    if (!(/^1[34578]\d{9}$/.test(phoneNumber))) {
+      wx.showToast({
+        title: '请填写正确的手机号码',
+        icon: 'success',
+        duration: 2000
+      })
+      return
+    }
+    if (vercode.replace(/\s/g, "") == "") {
+      wx.showToast({
+        title: '请填写验证码',
+        icon: 'success',
+        duration: 2000
+      })
+      return;
+    }
+    if (vercode.length != 4) {
+      wx.showToast({
+        title: '验证码长度有误！',
+        icon: 'success',
+        duration: 1500
+      })
+      return
+    }
+
+    const values = _.extend({
+      id: "123",
+      channel: 6,
+      content: JSON.stringify({
+        "name": name,
+        "phoneNumber": phoneNumber,
+        "vercode": vercode,
+      })
+    }, "");
+    that.addRQId = request.post(urls.order_orderSubmit, values, function (data) {
+      console.log(data);
+      //清空下表单
+      that.setData({
+        name: "",
+        phoneNumber: "",
+        vercode: ''
+      });
+      wx.showModal({
+        content: data.msg,
+        showCancel: false
+      });
+    }, that, { isShowLoading: true });
+
+  },
+  //网络刷新
+  refresh: function () {
+    console.log("刷新");
+    this.setData({
+      hasNetError: false
+    });
+    this.loadBandQuery()
+  },
+  //手机号码改变
+  bindChangePhoneNumber: function (e) {
+    var phoneNumber = e.detail.value;
+    this.data.phoneNumber = phoneNumber
+    this.setData({
+      phoneNumber: phoneNumber
+    })
+    console.log(this.data.phoneNumber)
+  },
+  //手机验证码改变
+  bindChangeVercode: function (e) {
+    var vercode = e.detail.value;
+    this.data.vercode = vercode
+    this.setData({
+      vercode: vercode    //手机验证
+    })
+    console.log(this.data.vercode)
+  },
+  setVerify: function (e) {
+    if (util.isRepeatClick()) return//判断是否为重复点击
+
+    var that = this
+    var phoneNumber = e.currentTarget.dataset.phonenumber//手机号码
+    var vercode = that.data.vercode    //手机验证码
+    // var contactName = e.detail.value.contactName//客户姓名【必填】
+    if (phoneNumber.length == 0) {
+      wx.showToast({
+        title: '请输入手机号！',
+        icon: 'success',
+        duration: 1500
+      })
+      return
+    }
+    if (phoneNumber.length != 11) {
+      wx.showToast({
+        title: '手机号长度有误！',
+        icon: 'success',
+        duration: 1500
+      })
+      return
+    }
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    if (!myreg.test(phoneNumber)) {
+      wx.showToast({
+        title: '手机号有误！',
+        icon: 'success',
+        duration: 1500
+      })
+      return
+    }
+
+    console.log(urls.verifyCode_GenerateVerifyCode + "?timestamp=" + new Date().getTime() + "&phoneNumber=" + phoneNumber)
+    this.setData({
+      verifyCodeURL: urls.verifyCode_GenerateVerifyCode + "?timestamp=" + new Date().getTime() + "&phoneNumber=" + phoneNumber
+    });
+    this.powerDrawer(e)
+  },
+  //加载图形验证码
+  loadGenerateVerifyCode: function () {
+    if (this.data.phoneNumber.length == 0) {
+      return
+    }
+    console.log(urls.verifyCode_GenerateVerifyCode + "?timestamp=" + new Date().getTime() + "&phoneNumber=" + this.data.phoneNumber)
+    this.setData({
+      verifyCodeURL: urls.verifyCode_GenerateVerifyCode + "?timestamp=" + new Date().getTime() + "&phoneNumber=" + this.data.phoneNumber
+    });
+  },
+  //验证图形验证码
+  verifyCode: function (e) {
+    var verifyCode = e.detail.value.verifyCode
+    var that = this;
+    if (request.isLoading(this.addRQId)) return;
+    const values = _.extend({ id: "123" ,channel: 6, content: JSON.stringify({ "phoneNumber": this.data.phoneNumber, "verifyCode": verifyCode }) }, "")
+    that.addRQId = request.get(urls.vercode_send, values, function (data) {
+      that.util("close")
+      var total_micro_second = 60 * 1000;    //表示60秒倒计时，想要变长就把60修改更大
+      count_down(this, total_micro_second);//验证码倒计时
+      console.log("验证图形验证码成功");
+      that.setData({
+        verifyCode: verifyCode,
+        loginFormOK: true
+      });
+    }, this, { isShowLoading: true });
+  },
+  powerDrawer: function (e) {
+    var currentStatu = e.currentTarget.dataset.statu;
+    this.util(currentStatu)
+  },
+  util: function (currentStatu) {
+    /* 动画部分 */
+    // 第1步：创建动画实例   
+    var animation = wx.createAnimation({
+      duration: 200,  //动画时长  
+      timingFunction: "linear", //线性  
+      delay: 0  //0则不延迟  
+    });
+    // 第2步：这个动画实例赋给当前的动画实例  
+    this.animation = animation;
+    // 第3步：执行第一组动画  
+    animation.opacity(0).rotateX(-100).step();
+    // 第4步：导出动画对象赋给数据对象储存  
+    this.setData({
+      animationData: animation.export()
+    })
+    // 第5步：设置定时器到指定时候后，执行第二组动画  
+    setTimeout(function () {
+      // 执行第二组动画  
+      animation.opacity(1).rotateX(0).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象  
+      this.setData({
+        animationData: animation
+      })
+      //关闭  
+      if (currentStatu == "close") {
+        this.setData(
+          {
+            showModalStatus: false
+          }
+        );
+      }
+    }.bind(this), 200)
+    // 显示  
+    if (currentStatu == "open") {
+      this.setData(
+        {
+          showModalStatus: true
+        }
+      );
+    }
+  },
+})
+
+//下面的代码在page({})外面
+/* 毫秒级倒计时 */
+function count_down(that, total_micro_second) {
+  if (total_micro_second <= 0) {
+    that.setData({
+      verifyCodeTip: "重新发送"
+    });
+    // timeout则跳出递归
+    return;
+  }
+
+  // 渲染倒计时时钟
+  that.setData({
+    verifyCodeTip: date_format(total_micro_second) + " 秒"
+  });
+
+  setTimeout(function () {
+    // 放在最后--
+    total_micro_second -= 10;
+    count_down(that, total_micro_second);
+  }, 10)
+}
+
+// 时间格式化输出，如03:25:19 86。每10ms都会调用一次
+function date_format(micro_second) {
+  // 秒数
+  var second = Math.floor(micro_second / 1000);
+  // 小时位
+  var hr = Math.floor(second / 3600);
+  // 分钟位
+  var min = fill_zero_prefix(Math.floor((second - hr * 3600) / 60));
+  // 秒位
+  var sec = fill_zero_prefix((second - hr * 3600 - min * 60));// equal to => var sec = second % 60;
+  // 毫秒位，保留2位
+  var micro_sec = fill_zero_prefix(Math.floor((micro_second % 1000) / 10));
+
+  return sec;
+}
+
+// 位数不足补零
+function fill_zero_prefix(num) {
+  return num < 10 ? "0" + num : num
+}

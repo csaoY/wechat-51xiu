@@ -1,0 +1,33 @@
+<form bindsubmit="submitLogin">
+  <view class="con">
+    <view class="header">
+      <image src="/images/log.png" class="logo"></image>
+    </view>
+    <view class="main">
+      <view class="mobile">
+        <image src="/images/mobile.png"></image>
+        <input placeholder="手机号" bindinput="bindChangePhoneNumber" name="phoneNumber" maxlength="11" value="{{phoneNumber}}" />
+      </view>
+      <view class="mobile">
+        <image src="/images/login.png"></image>
+        <input placeholder="验证码" name="vercode" maxlength="4" bindinput="bindChangeVercode"  />
+        <view class="yzm" bindtap="setVerify" data-statu="open" data-phoneNumber="{{phoneNumber}}">{{verifyCodeTip}}</view>
+      </view>
+      <button disabled="{{loginFormOK==false}}" formType="submit">无需注册，验证码登录</button>
+      <!--<view class="txt">
+        登录即表示您同意 <text bindtap="model" class="xieyi">《用户协议》</text>
+      </view>-->
+    </view>
+  </view>
+</form>
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+  <form bindsubmit="verifyCode">
+  <view class="content">
+    <input placeholder="请输入右侧图片验证码" name="verifyCode" maxlength="4"/>
+    <image src="{{verifyCodeURL}}" bindtap="loadGenerateVerifyCode"></image>
+  </view>
+  <button class="submit" formType="submit">提交</button>
+  <view class="no" bindtap="powerDrawer" data-statu="close">×</view>
+  </form>
+</view>

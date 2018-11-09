@@ -1,0 +1,10 @@
+/* pages/news/news.wxss */
+page{
+  background: #fff;color:#333;}
+  .container{
+    padding:15px;
+  }
+
+  .h3{
+    font-size:20px;
+  }

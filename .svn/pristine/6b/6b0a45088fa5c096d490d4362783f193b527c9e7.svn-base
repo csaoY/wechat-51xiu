@@ -1,0 +1,71 @@
+<!-- pages/band/selectmodel/selectmodel.wxml -->
+<import src="../../templates/netError.wxml" />
+<view class="container">
+  <view class="tab-flex">
+    <scroll-view scroll-y="true" style="height: {{scrollViewHeight}}px;" class="left-tab">
+      <view class="brand-title">
+        <text class="cla">型号</text>
+      </view>
+      <block wx:for="{{versionList}}" wx:for-index="idx" wx:key="id" wx:for-item="version">
+        <view class="{{currentSelectedMobile==idx ? 'brand-active' : 'brand'}}" catchtap="mobileTypeTap" data-idx="{{idx}}" data-versionid="{{version.id}}">
+          <text class="cla">{{version.versionName}}</text>
+        </view>
+      </block>
+    </scroll-view>
+    <scroll-view scroll-y="true" style="height: {{scrollViewHeight}}px;" class="right-tab">
+      <view class="title-all" wx:if="{{hasNetError===false}}">颜色</view>
+      <view class="kind-title" wx:if="{{hasNetError===false}}">
+        <block wx:for="{{colorList}}" wx:for-index="idx" wx:key="id" wx:for-item="color">
+          <view data-type="" catchtap="switchColor" class="normal {{currentSelectedColor==idx ? 'active' : ''}}" data-colorid="{{color.id}}" data-idx="{{idx}}">{{color.colorName}}</view>
+        </block>
+      </view>
+      <template wx:if="{{hasNetError===true}}" is="netError" data="{{...item}}" />
+      <view class="title-all" wx:if="{{hasNetError===false}}">故障类型</view>
+
+
+      <view class="box" wx:if="{{hasNetError===false}}">
+
+
+        <block wx:for="{{planList}}" wx:for-index="idx" wx:key="faultVO.id" wx:for-item="plan">
+          <view class="box-list">
+            <view class="box-list-title" bindtap="detailed" data-plan="{{plan}}">
+              <view class="box-list-title-img">
+                <image src="http://msit.51xiuj.com/{{plan.faultVO.imgUrl1}}"></image>
+              </view>
+              <view class="box-list-title-txt">
+                <view>{{plan.faultVO.singleName}}问题</view>
+                <view class="box-list-title-txt-content">{{plan.faultVO.name}}</view>
+              </view>
+              <view class="box-list-title-arrow">
+                <image class="arrow" src="../../../images/ico_app_arr_r.png"></image>
+              </view>
+            </view>
+            <view class="box-list-content">
+              <block wx:for="{{plan.planList}}" wx:for-index="idx" wx:key="id" wx:for-item="plan2">
+                <view class="box-list-content-list" catchtap="onSelectItem" data-id="{{plan2.id}}">
+                  <text class="bar-a">{{plan2.faultPartDetail}}</text>
+                  <text class="bar-b">￥{{plan2.price}}</text>
+                  <view wx:if="{{plan2.isSelected==true}}" class="ico ico_choose" ></view>
+                  <view wx:elif="{{plan2.isSelected==false}}" class="ico" ></view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="" style="height:122rpx"></view>
+    </scroll-view>
+  </view>
+  <view class="bot">
+    <view class="goodscar">
+    <image src="/images/gouwuche.png" class="gwc"></image>
+      <view>{{selectItemCount}}</view>
+    </view>
+    <view class="price">
+      共计：
+      <text class="price-num">
+        ￥{{totalPrice}}</text>
+    </view>
+    <button bindtap="next" disabled="{{selectedPlanList.length==0}}">下一步</button>
+  </view>
+</view>

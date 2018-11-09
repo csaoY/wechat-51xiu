@@ -1,0 +1,3 @@
+<view class="container">
+  <web-view src="https://m.shanyhs.com/v2/channel/index.html?channelId=29839&ismini=1"></web-view>
+</view>

@@ -1,0 +1,101 @@
+<import src="../templates/netError.wxml" />
+<view class="con">
+
+
+  <image src="/images/main.png" class="header"></image>
+  <!--<view class="box">
+    <view class="classname"></view>
+    <image src="/images/b1.png" bindtap="tab" data-pid="1" hidden="{{eventid==2}}"></image>
+    <image src="/images/b2.png" bindtap="tab" data-pid="1" hidden="{{eventid==1}}"></image>
+    <image src="/images/b3.png" class="fr" bindtap="tab" data-pid="2" hidden="{{eventid==1}}"></image>
+    <image src="/images/b4.png" class="fr" bindtap="tab" data-pid="2" hidden="{{eventid==2}}"></image>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:495rpx;" hidden="{{eventid==2}}" class="swi">
+      <image src="/images/arrow-o.png" class="arrow"></image>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/yewu1.jpg" class="show"></image>
+          <image src="/images/yewu2.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/yewu3.jpg" class="show"></image>
+          <image src="/images/yewu4.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:495rpx;" hidden="{{eventid==1}}" class="swi">
+      <image src="/images/arrow-o.png" class="arrow"></image>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/huishou1.jpg" class="show"></image>
+          <image src="/images/huishou2.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="box-list">
+          <image src="/images/huishou3.jpg" class="show"></image>
+          <image src="/images/huishou4.jpg" class="show"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+
+
+  </view>-->
+
+  <view class="brand">
+    <view class="brand-title">维修品牌列表</view>
+    <template wx:if="{{hasNetError===true}}" is="netError" data="{{...item}}" />
+    <block wx:for="{{brandInfo}}" wx:for-index="idx" wx:key="brandId" wx:for-item="item" data-idx="{{idx}}">
+      <view class="brand-list" bindtap="bindQueTap" data-typeId="{{item.typeId}}" data-brandId="{{item.brandId}}">
+        <image src="{{item.imgUrl}}"></image>
+        <view class="listtext">{{item.brandName}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="form">
+    <form bindsubmit="submitOrder">
+      <image src="/images/title.png" class="img"></image>
+      <view class="input">
+        <image src="/images/user.png"></image>
+        <input name="name" placeholder="联系人" maxlength="20" value="{{name}}"/>
+      </view>
+      <view class="input">
+        <image src="/images/phone.png"></image>
+        <input name="phoneNumber" placeholder="手机号" bindinput="bindChangePhoneNumber" maxlength="11" value="{{phoneNumber}}"/>
+      </view>
+      <view class="mobile">
+        <image src="/images/login.png"></image>
+        <input placeholder="验证码" name="vercode" value="{{vercode}}" maxlength="4" bindinput="bindChangeVercode"  />
+        <view class="yzm" bindtap="setVerify" data-statu="open" data-phoneNumber="{{phoneNumber}}">{{verifyCodeTip}}</view>
+      </view>
+      <button class="btn" formType="submit">立即下单</button>
+    </form>
+  </view>
+
+  <!--<view class="brand">
+    <view class="brand-title">维修品牌列表</view>
+    <block wx:for="{{brandInfo}}" wx:for-index="idx" wx:key="brandId" wx:for-item="item" data-idx="{{idx}}">
+      <view class="brand-list" bindtap="bindQueTap" data-typeId="{{item.typeId}}" data-brandId="{{item.brandId}}">
+        <image src="{{item.imgUrl}}"></image>
+        <view class="listtext">{{item.brandName}}</view>
+      </view>
+    </block>
+  </view>-->
+
+  <view style="height:25rpx;"></view>
+
+</view>
+
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+  <form bindsubmit="verifyCode">
+  <view class="content">
+    <input placeholder="请输入右侧图片验证码" name="verifyCode" maxlength="4"/>
+    <image src="{{verifyCodeURL}}" bindtap="loadGenerateVerifyCode"></image>
+  </view>
+  <button class="submit" formType="submit">提交</button>
+  <view class="no" bindtap="powerDrawer" data-statu="close">×</view>
+  </form>
+</view>

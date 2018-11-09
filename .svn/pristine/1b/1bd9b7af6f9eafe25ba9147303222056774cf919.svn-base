@@ -1,0 +1,147 @@
+<view class="container" wx:if="{{idx==1}}">
+<view class="h3">
+    【首发】“51修”获得三千万Pre-A轮融资，整合供应链及平台优势打造手机售后产业生态圈
+</view>
+<view>
+<view class="texts_info" style="margin:20px 0;color:#999">
+        <text style="font-size:14px;margin:20px 0">2017-04-14</text>
+        <text style="font-size:14px;display:inline-block;margin-left:10px;">51修|手机维修与回收</text>
+ </view>
+</view>
+<view class="texts_cont_box">
+    <!--发布内容-->
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">喜报讯道 : 4月12日， “51修”宣布完成了Pre-A轮融资，本轮融资金额三千万元，该轮融资过后公司将进一步战略升级，拓展B端资源从端到端对接，打造手机售后服务行业全渠道、全产业链平台。</text>
+    </view>
+
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">51修上线于2016年6月，依托于本身在手机产业链的资源优势，上线之初就得到迅猛发展，截至目前已开通全国9个城市的自营上门服务，同时还有数百家线下加盟服务商，公司在市场拓展，客户口碑等方面飞速发展，已经成为细分领域少有的实现盈利的公司之一。</text>
+    </view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2016年之前，手机售后市场长期处于灰色、不透明的状态，天价维修、偷梁换柱等屡见不鲜，用户体验极差。51修创始人张立龙认为，互联网能很好的解决信息不对称等诸多问题，手机售后行业用互联网改造的机会极大，能极大提升用户体验，凭借自己多年的产业经验和资源，坚定的希望能够改变行业现状。</text>
+    </view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2016年6月，51修互联网维修与回收平台上线，率先推出线上报价、上门服务、全程录像、半年质保等服务标准，上线伊始广泛获得用户的良好口碑，项目仅上线一个月便获得了天使轮的投资。</text>
+    </view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">51修的手机上门维修服务不受地点限制，不论客户身在何地，维修人员都可以在约定时间到达现场服务，365天不打烊。用户可以在51修微信公众号（微信搜索51修），官网（www.51xiu.cc）选择预约上门维修或邮寄维修，整个下单流程只需要几步即可完成，上门维修完成时间平均在30分钟之内。&nbsp;</text>
+    </view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">截至2017年4月，51修通过全体成员不断努力取得了订单累计突破18万单，上门维修范围遍布北京，上海，广州，深圳，武汉，南京，杭州，成都，重庆九大城市，维修工程师累计行程七十三万公里，绕地球15圈！ 51修在2016年里还斩获了牛耳奖年度“互联网行业年度成长最快企业”荣誉，并获得CCTV央视网优选品牌这一殊荣。</text>
+    </view>
+
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">谈到融资之后的发展计划，张立龙先生表示：51修将推出“手机售后服务生态圈”计划，打造供应链整合，平台共享，立志成为能为全国手机售后服务行业全渠道全产业链的互联网平台，服务全国手机售后服务点与手机维修工程师及全国十亿手机用户。</text>
+    </view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">“手机售后服务生态圈”要打造规模效应和共享效应，打造规模效应方面，利用目前现有的供应链优势，批量采购，把控品质，降低成本；在共享效应方面，实现从配件分配，到客户共享，并推行一套统一的服务规范。未来51修将整合各地最优秀的本地维修资源，在供应商，维修商的引进上严格把控，提供一套统一、极致的服务体验。</text>
+    </view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">51修发展历程：</text></view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2016年6月，51修手机上门维修与回收服务上线</text></view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2016年7月，获得2000万元天使投资</text></view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2016年9月，获得CCTV央视网优选品牌殊荣</text></view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2016年12月，51修再执牛耳，斩获牛耳奖：互联网行业年度成长最快企业</text></view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2017年3月，51修全国第八第九个服务城市上线</text></view>
+    <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2017年4月，获得3000万Pre-A轮融资</text></view>
+    <view></view>
+    <!--发布内容END-->
+</view>
+</view>
+
+<view class="container" wx:if="{{idx==2}}">
+  
+<view class="h3">
+    51修获康佳授权售后服务商，开启互联网服务新模式
+</view>
+<view>
+<view class="texts_info" style="margin:20px 0;color:#999">
+         <text style="font-size:14px;margin:20px 0">2017-04-25 17:11:37</text>
+           <text style="font-size:14px;display:inline-block;margin-left:10px;">51修|手机维修与回收</text>
+ </view>
+</view>
+<view class="texts_cont_box">
+    <view class="new_warp_p new_cont_text">
+
+
+        <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">2017年4月25日，51修与康佳手机达成合作协议，授权51修成为其互联网售后服务商，今后51修将为康佳用户提供高质量的售后服务体验，提高康佳用户满意度、增强用户粘性，同时，双方将在品牌合作，资源整合，优势互补等方面将进行深度合作。</text>
+        </view>
+
+        <view style=" text-indent: 2em; line-height: 34px;text-align: center;">
+            <text style="font-size:16px">
+            <text
+                    style="margin: 0px; padding: 0px; max-width: 100%; font-variant-ligatures: normal; orphans: 2; text-align: center; white-space: normal; widows: 2; font-size: 13px; letter-spacing: 0.25em; color: rgb(136, 136, 136); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; line-height: 25.6px; box-sizing: border-box !important; word-wrap: break-word !important;"></text>
+        </text>
+        </view>
+        <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">51修创始人张立龙讲道：此前获得Pre-A轮融资之后，将不断延伸服务能力和服务质量，加强与手机品牌商的合作。长久以来，手机维修市场鱼龙混杂、乱象丛生，官方维修预约难、响应慢等诸多问题。51修率先提出免费上门、标准报价、全程录像、半年质保的服务标准，获得用户的广泛认可和良好口碑，同时，也是获得品牌厂商认可和合作的基石。</text>
+        </view>
+        <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">康佳作为我国家电数码的知名老牌，一直致力于为消费者提供高质量的产品和服务，几十年如一日的坚持和高标准造就了今日的康佳。此次与51修合作，也是康佳进一步优化用户服务的体现，今后康佳手机用户，可以享受足不出户，服务上门的极致体验，从此告别手机售后维修难、维修慢的窘境。</text>
+        </view>
+        <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">康佳集团签约的负责人表示，这次选择51修作为上门售后服务的授权商，事先进行了28个服务项目的调研，在响应时间、问题解决效率、预约上门时间准确率、寄修、备货、专业工具配套等主要指标的考量中，51修均表现优异。在众多维修服务商的甄选中，51修获得考核组的一致好评，最终成为康佳当前唯一上门售后服务商。</text>
+        </view>
+        <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">51修秉承“工匠精神，极致服务”的理念和做精做强的原则，用心做服务、用口碑做营销，力求成为手机售后服务界的“海底捞”。51修现已开通全国9个城市的上门服务，相比其他服务商不同的是，51修所有维修工程师全部是自营招聘的员工，所有员工全部签正式劳动合同、缴纳五险一金，同时公司还为维修工程师额外购买商业保险，视员工为财富，善待员工，员工才能善待客户，这也是51修的经营理念。</text>
+        </view>
+        <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">众所周知，现在互联网行业进入下半程，拼的是精耕细作，用心服务好每一位用户才是立业之本，51修将不忘初心，日以继行。</text>
+        </view>
+
+        <view></view>
+    </view>
+</view>
+
+
+</view>
+
+
+<view class="container" wx:if="{{idx==3}}">
+ 
+<view class="h3">
+    用工业标准化引领服务，“51 修”筑绩手机售后O2O
+</view>
+<view>
+<view class="texts_info" style="margin:20px 0;color:#999">
+       <text style="font-size:14px;margin:20px 0">2017-06-05 14:53:40</text>
+         <text style="font-size:14px;display:inline-block;margin-left:10px;">51修|手机维修与回收</text>
+        
+ </view>
+</view>
+<view class="texts_cont_box">
+    <view class="new_warp_p new_cont_text">
+        <view class="news_warp">
+            <!--新闻资讯-->
+            <view class="new_warp_p new_cont_text">
+                <view></view>
+                <view></view>
+                <view></view>
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">据统计，国产手机的平均返修率在15%-20%左右，按中国2016年手机出货量为5.6亿部计算，每年近1亿台手机需要维修，再加上手机回收、以旧换新以及软件更新业务，手机售后市场规模将达2000亿以上。</text>
+                </view>
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">这一数据表明，手机售后市场是一个潜力巨大的“蓝海”市场，也已经吸引不少投资人和创业者们“跃跃欲试”。随着互联网行业进入下半程，手机售后O2O已经逐渐形成了以优化用户体验为第一要素而衍生出的一个极具潜力的手机“后市场”。不少手机售后O2O品牌抓准时机“相继上位”，也许预示着新的商业风口即将到来。</text>
+                </view>
+
+                <view style="text-indent: 2em;line-height:34px;"><text
+                        style="font-size:16px">小编曾通过百度、微信搜索“<strong>手机上门维修</strong>”，各种“修”不下50家，均称道免费上门、价格透明、全程录像、原厂品质、半年质保，然而能够真正做到的少之又少。从网上的评价来看，用户负面评价大多集中在上门时效和质保方面上，不少商家用户下单后反应需要两到三天后才能上门，还有不少出现售后问题，商家以各种理由推脱，所谓的半年质保都只是幌子。</text>
+                </view>
+
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">根据维修手机客户回访所得：他们曾在多个平台下单，其中51修响应最为快速，下单2分钟便接到客服来电，5分钟后接到工程师来电，承诺2小时内便可上门维修。</text>
+                </view>
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">不难看出，只有真正做到免费上门、价格透明、全程录像、技术专业、品质配件、半年质保，才能在如今趋近饱和的手机售后市场中被客户优先选择。</text>
+                </view>
+
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px"><strong>51修</strong>上线于2016年6月，不到一年的时间里，先后获得由CCTV 认证的“CCTV央视网商城优选品牌”和牛耳奖颁发的“互联网行业年度成长最快企业”奖项。并且，51修在今年先后与康佳和小辣椒达成合作协议，成为其指定售后服务商。</text>
+                </view>
+
+
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">此前获得Pre-A轮融资之后，51修将不断延伸服务能力和服务质量，加强与手机品牌商的合作。长久以来，为解决手机维修市场鱼龙混杂、乱象丛生，官方维修预约难、响应慢等诸多问题，51修率先提出免费上门、标准报价、全程录像、半年质保的服务标准，将工业化管理理念引入服务行业，通过SOP标准作业流程对服务进行管理，从工程师接单直至最后维修完成离场，所有的语言、动作及技术要求全部标准化，以保障每次服务的品质和良好的用户体验。</text>
+                </view>
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px"><strong>51修将继续秉承“工匠精神，极致服务”的品牌理念，将手机售后服务臻至完美。并且一再强调“做服务不是硬着头皮上，而是有信心去做到，有责任去担当。”</strong></text>
+                </view>
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">截止至2017年5月26号，51修已将版图拓展到北京、上海、广州、深圳、南京、成都、杭州、武汉、重庆、温州、岳阳11个城市。其他城市仍在开通中，敬请期待。</text>
+
+                <view style="line-height:34px;text-indent: 2em;"><text style="font-size:16px"><strong>2017，51修将继续领跑手机维修行业，以最优质的服务，让每位用户得到最专业最便捷的服务体验。不忘初心，奋发前行! &nbsp;</strong></text>
+                </view>
+                <view style="text-indent: 2em;line-height:34px;"><text style="font-size:16px">体验51修标准化手机上门维修服务，关注官网和微信公众号享受足不出户轻松预约下单，就会有专业维修工程师为您上门修理与回收手机。此外，"51修"还支持外地寄修、企业订制等业务。</text>
+                </view>
+
+
+                <view></view>
+            </view>
+            <!--新闻资讯END-->
+          
+        </view>
+    </view>
+</view>
+</view>
+
+
+
+</view>

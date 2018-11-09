@@ -1,0 +1,68 @@
+
+<!-- pages/more/orderitem/orderitem.wxml -->
+<view class="con">
+  <view class="model">
+    <text class="title">订单信息</text>
+    <view class="hr">
+      <view class="hr-left "></view>
+    </view>
+    <view class="list">
+      <view>
+        <view class="title">提交时间：</view>
+        <text>{{createTime}}</text>
+      </view>
+    </view>
+    <view class="list">
+      <view>
+        <view class="title">订单号：</view>
+        <text>{{orderInfo.orderNo}}</text>
+      </view>
+    </view>
+    <view class="list">
+      <view>
+        <view class="title">订单状态：</view>
+        <text>{{deviceStatStr}}</text>
+      </view>
+    </view>
+    <view></view>
+    <view class="model">
+      <text class="title">回收设备</text>
+    </view>
+    <view class="hr">
+      <view class="hr-left"></view>
+    </view>
+    <view class="list">
+      <block wx:for="{{orderDetailList}}" wx:key="detailId" wx:for-index="idx" wx:for-item="orderDetail">
+        <view class="bar">
+          <view class="left">
+            <view class="">{{orderDetail.VERSION_NAME}}</view>
+            <view class="">估价：￥{{orderDetail.PRICE}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="list">
+      <view>
+        <view class="title">总计：</view>
+        <text class="price">￥{{totalPrice}}</text>
+        （以最终实际价格为标准）
+      </view>
+      </view>
+      <view class="model">
+        <text class="title">其他信息</text>
+      </view>
+      <view class="hr">
+        <view class="hr-left"></view>
+      </view>
+      <view class="list">
+        <view>
+          <view class="title">我的备注：</view>
+          <text>{{orderInfo.remark}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+<view class="bot">
+  <button class=" btn1" bindtap="backHome">返回首页</button>
+  <button  bindtap="makePhoneCall" class="btn">联系客服</button>
+</view>

@@ -1,0 +1,29 @@
+<view class="con">
+  <view class="phone-kind">
+    <text>评估型号:  {{phone}}</text>
+  </view>
+  <view class="issue">
+    <block wx:for="{{assessments}}" wx:key="unique" wx:for-index="idx" wx:for-item="assessment" data-idx="{{idx}}">
+      <view class="issue-list">
+        <text class="name">{{idx+1}}  {{assessment.typeName}}</text>
+        <text class="content">{{assessment.assessment_name_selected}}</text>
+      </view>
+    </block>
+  </view>
+  <view style="background: white;padding-bottom: 20rpx;">
+    <block wx:for="{{selectedOptions}}" wx:key="id" wx:for-item="option" wx:for-index="idx">
+      <view  class="select">{{option.detailName}}</view>
+    </block>
+  </view>
+  <view class="modify">
+    <text class="price-title">评估价格</text>
+    <text class="price">￥{{price}}</text>
+    <view class="re-modify" catchtap="remodify">重新评估</view>
+  </view>
+  <view style="height:36rpx;"></view>
+  <view class="bot">
+    <!--<button wx:if="{{price > 50}}" catchtap="add" class="btn">加入回收车</button>
+      <button wx:else catchtap="add" class="btn btn1">加入回收车</button>-->
+      <button catchtap="order" hidden="{{price<50}}" class="btn btn1">立即下单</button>
+      </view>
+    </view>
